@@ -1,6 +1,4 @@
-<center> **Project Proposals** </center>
-<center> Rafael Carrasco </center>
-<center> Galvanize DSI 4 </center>
+# Project Proposals - Rafa - DSI 4
 
 
 * Project 1: 
