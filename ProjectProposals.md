@@ -4,7 +4,7 @@
 <center> Galvanize DSI 4 </center>
 
 
-# Project 1: 
+* Project 1: 
 -----------------------
 **Building an Attribution Based Impression Model**
 
@@ -16,7 +16,7 @@ I will also use Prezi to present all relevant information.
 
 I have my data, so my next step is finding the right methodology for creating priors.  I will need to collect impression information, but can easily get that as well.  
 
-# Project 2:
+* Project 2:
 --------------------------------
 **Open Ended Employee Reviews**
 
