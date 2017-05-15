@@ -1,5 +1,4 @@
-# <center>Project Proposals</center>
-
+<center> **Project Proposals** </center>
 <center> Rafael Carrasco </center>
 <center> Galvanize DSI 4 </center>
 
