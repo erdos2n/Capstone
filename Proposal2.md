@@ -1,5 +1,5 @@
 <center>
-![](https://pbs.twimg.com/profile_images/595327206638755840/x9_fTdew.jpg){:height="200px" width="200px"}![](https://pbs.twimg.com/profile_images/3573407613/cc2d933500d6c7369fdca890103a9cef_400x400.jpeg){:height="200px" width="200px"}
+![](https://pbs.twimg.com/profile_images/595327206638755840/x9_fTdew.jpg){:height="200px" width="200px"}  ![](https://pbs.twimg.com/profile_images/3573407613/cc2d933500d6c7369fdca890103a9cef_400x400.jpeg){:height="200px" width="200px"}
 </center>
 
 # Ad Agency Capstone - Rafa
