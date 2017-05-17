@@ -1,6 +1,6 @@
-![](images/galvanize-logo.png?raw=true)
-![](images/infinite-logo.jpeg?raw=true)
-
+<center>
+![](images/galvanize-logo.jpg?raw=true){:height="200px" width="200px"}![](images/infinite-logo.jpeg?raw=true){:height="200px" width="200px"}
+</center>
 
 # Ad Agency Capstone
 **Part 1: Impression Model**
