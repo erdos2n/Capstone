@@ -1,16 +1,16 @@
 # Ad Agency Capstone
-** Part 1: Impression Model **
+**Part 1: Impression Model**
 ------------------------------
 * Using attribution reports, I will run a multi-arm bandit to show which ads to run, how many times to run each ad and which order to run the ads.
-	* Steps to Setup Multi-Arm Bandit
-	* Create W/L lists for all ads
-	* Use Uniform Distributions
-	* Run Multi-Arm Bandit many times to get statistics
+	* **Steps to Setup Multi-Arm Bandit**
+		* Create W/L lists for all ads
+		* Use Uniform Distributions
+		* Run Multi-Arm Bandit many times to get statistics
 
 * After I do this, I would like to create some dashboard using Flask that will read in the report, play the game and give the best outcomes
 
 
-** Part 2: Text Analysis **
+**Part 2: Text Analysis**
 ------------------------------
 * The company cannot get me enough reviews to train a model (they can only give me 60 statements, we can discuss if this is enough later).
 
