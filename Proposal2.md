@@ -1,3 +1,7 @@
+![](images/galvanize-logo.png?raw=true)
+![](images/infinite-logo.jpeg?raw=true)
+
+
 # Ad Agency Capstone
 **Part 1: Impression Model**
 ------------------------------
