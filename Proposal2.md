@@ -2,7 +2,7 @@
 ![](images/galvanize-logo.jpg?raw=true){:height="200px" width="200px"}![](images/infinite-logo.jpeg?raw=true){:height="200px" width="200px"}
 </center>
 
-# Ad Agency Capstone
+# Ad Agency Capstone - Rafa C
 **Part 1: Impression Model**
 ------------------------------
 * Using attribution reports, I will run a multi-arm bandit to show which ads to run, how many times to run each ad and which order to run the ads.
