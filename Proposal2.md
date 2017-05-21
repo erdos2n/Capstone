@@ -1,8 +1,6 @@
 <p align = "center">
-	![](https://cdn.geekwire.com/wp-content/uploads/2016/09/Galvanize-Logo-Text-Logo-png-4.png)
-</p>
-<p align = "center">
-	![](https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAAQeAAAAJGFkMjczOTIxLWZkNjUtNGMxZi1hZTIxLTAwMjBmODVjZTI0Ng.png)
+<img src = "https://cdn.geekwire.com/wp-content/uploads/2016/09/Galvanize-Logo-Text-Logo-png-4.png">
+<img src = "https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAAQeAAAAJGFkMjczOTIxLWZkNjUtNGMxZi1hZTIxLTAwMjBmODVjZTI0Ng.png">
 </p>
 
 # Ad Agency Capstone - Rafa
