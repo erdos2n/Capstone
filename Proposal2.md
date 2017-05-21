@@ -1,4 +1,4 @@
-![](https://pbs.twimg.com/profile_images/595327206638755840/x9_fTdew.jpg)![](https://pbs.twimg.com/profile_images/3573407613/cc2d933500d6c7369fdca890103a9cef_400x400.jpeg)
+![](http://bamcommunications.biz/wp-content/uploads/2015/05/Galvanize-Galvanize-logomark-text-only-2-2-840x210.png)![](https://cdn.expertise.com/logos/dallas_tx_advertising-agencies_15.jpg)
 
 # Ad Agency Capstone - Rafa
 **Part 1: Impression Model**
