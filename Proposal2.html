@@ -1014,60 +1014,106 @@ body .markdown-body
     page-break-after: avoid;
   }
 }
-</style><title>Proposal2</title></head><body><article class="markdown-body"><p><img alt="" src="https://pbs.twimg.com/profile_images/595327206638755840/x9_fTdew.jpg" /><img alt="" src="https://pbs.twimg.com/profile_images/3573407613/cc2d933500d6c7369fdca890103a9cef_400x400.jpeg" /></p>
+</style><title>Proposal2</title></head><body><article class="markdown-body"><p align = "center">
+<img src = "https://cdn.geekwire.com/wp-content/uploads/2016/09/Galvanize-Logo-Text-Logo-png-4.png">
+<img src = "https://theinfiniteagency.com/wp-content/themes/infiniteAgency/assets/dist/img/west.jpg">
+</p>
+
 <h1 id="ad-agency-capstone-rafa"><a name="user-content-ad-agency-capstone-rafa" href="#ad-agency-capstone-rafa" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Ad Agency Capstone - Rafa</h1>
 <h2 id="part-1-impression-model"><strong>Part 1: Impression Model</strong></h2>
-<ul>
-<li>
-<p>Using attribution reports, I will run a multi-arm bandit to show which ads to run, how many times to run each ad and which order to run the ads.</p>
-<ul>
-<li><strong>Steps to Setup Multi-Arm Bandit</strong><ul>
-<li>Create W/L lists for all ads</li>
-<li>Use Uniform Distributions</li>
-<li>Run Multi-Arm Bandit many times to get statistics</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p>After I do this, I would like to create some dashboard using Flask that will read in the report, play the game and give the best outcomes<br />
-*</p>
-</li>
-</ul>
+<pre><code>* Using attribution reports, I will run a multi-arm bandit to show which ads to run, how many times to run each ad and which order to run the ads.
+
+* **Steps to Setup Multi-Arm Bandit**
+
+    * Create W/L lists for all ads
+
+    * Use Uniform Distributions
+
+    * Run Multi-Arm Bandit many times to get statistics
+
+* After I do this, I would like to create some dashboard using Flask that will read in the report, play the game and give the best outcomes
+</code></pre>
 <h1 id="data-description"><a name="user-content-data-description" href="#data-description" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Data Description</h1>
 <p>My data is a collection of tables  with various rows and 4000 + columns.  The column lengths are equal across all tables, which is nice, because I can concatenate all of the tables&hellip;and by can, I mean, I did. </p>
-<p>I created a <strong>data cleaning pipeline</strong> that works as follows:<br />
-<em> First I combine all of the tables into a large table (big_frame)<br />
-</em> Then I drop all NaN columns (100% NaNs)<br />
-<em> That reduces the number of columns to 1000<br />
-</em> After that I go through and convert all of the dates to datetime objects within the dataframe<br />
-<em> I then go and filter out all of the impressions that the customer has seen and create a list of our them.<br />
-    - Ex: [[ad1], [ad2, ad5, ad1], [ad2, ad5, ad5, ad9, &hellip;, ad10], &hellip;]<br />
-</em> Three new columns are then created using that data:<br />
-    - big_frame[hr] = the hour of the conversion, regardless of the day<br />
-    - big_frame[path_length] = the number of ads that person has seen before they converted.<br />
-    - big_frame[paths] = the actual ads they saw in order <br />
-<em> I then created histograms for the following data, to find relationships:<br />
-    - Conversions by time of day <br />
-    - path lengths <br />
-    - ads seen <br />
-</em> Now, I&rsquo;m going to use this data to create a count of wins and losses for each ad.<br />
-    - A win is if the ad is the last attribution in the path. (last node in the path) <br />
-    - A loss if it is anywhere else.<br />
-    - Ex: ad1 = [0, 0, 0, 0,  1, 0, 0, 1, 0, 0, 1, 1, 1, 0]<br />
-        + 0s are losses<br />
-        + 1s are wins <br />
-<em> I&rsquo;m then going to run a bayesian multi-arm bandit using this information and find the optimal path length, iterating over each &lsquo;game&rsquo;. <br />
-</em> This will become the impression model that needs to be used. </p>
+<h1 id="step-1-clean-the-data"><a name="user-content-step-1-clean-the-data" href="#step-1-clean-the-data" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Step 1: Clean the data</h1>
+<p align = "center">
+<img src = "http://tomba.co/analysis-consult/images/data-cleansing.jpg">
+</p>
+
+<p>I created a <strong>data cleaning pipeline</strong> that works as follows:</p>
+<pre><code>* First I combine all of the tables into a large table (big_frame)
+
+* Then I drop all NaN columns (100% NaNs)
+
+    * That reduces the number of columns to 1000
+
+* After that I go through and convert all of the dates to datetime objects within the dataframe
+
+* I then go and filter out all of the impressions that the customer has seen and create a list of our them.
+
+    * Ex: [[ad1], [ad2, ad5, ad1], [ad2, ad5, ad5, ad9, ..., ad10], ...]
+
+* Three new columns are then created using that data:
+
+    * big_frame[hr] = the hour of the conversion, regardless of the day
+
+    * big_frame[path_length] = the number of ads that person has seen before they converted.
+
+    * big_frame[paths] = the actual ads they saw in order
+
+
+    | hr | path_length | paths  |
+    |----|-------------|--------|
+    | 15 |     5       |[ad1,..]|
+    | 2  |     1       |[ad5]   |
+</code></pre>
+<h1 id="step-2-analyze-the-data"><a name="user-content-step-2-analyze-the-data" href="#step-2-analyze-the-data" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Step 2: Analyze the data</h1>
+<p align = "center">
+<img src = "https://i.stack.imgur.com/T1Hep.png">
+</p>
+
+<pre><code>* I then created histograms for the following data, to find relationships:
+
+    * Conversions by time of day
+
+    * path lengths
+
+    * ads seen
+
+* Now, I'm going to use this data to create a count of wins and losses for each ad.
+
+    * A win is if the ad is the last attribution in the path. (last node in the path)
+
+    * A loss if it is anywhere else.
+
+    * Ex: ad1 = [0, 0, 0, 0,  1, 0, 0, 1, 0, 0, 1, 1, 1, 0]
+
+      * 0s are losses
+
+      * 1s are wins
+</code></pre>
+<h1 id="step-3-run-the-multi-arm-bandit"><a name="user-content-step-3-run-the-multi-arm-bandit" href="#step-3-run-the-multi-arm-bandit" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Step 3: Run the multi-arm bandit</h1>
+<p align = "center">
+<img src = "http://imgs.xkcd.com/comics/progeny.png">
+</p>
+
+<p>To run the bayesian multi arm bandit:</p>
+<pre><code>* I will create a uniform distribution across the ads
+
+* I will then run the game until a win is hit.  I will store ads that were chosen and do it again.
+
+* See step 2
+
+* Do step 3 many times
+
+* I will then find the most used path to generate the best path.
+
+* This will become the impression model that needs to be used.
+</code></pre>
 <h2 id="part-2-text-analysis"><strong>Part 2: Text Analysis</strong></h2>
-<ul>
-<li>
-<p>The company cannot get me enough reviews to train a model (they can only give me 60 statements, we can discuss if this is enough later).</p>
-</li>
-<li>
-<p>I will create a sentiment analysis using gensem and textblob or maybe just gensem.  I&rsquo;m not entirely sure of what gensem can do, so I need to look into it more.  Regardless, I plan on using scores to create a grading system from 1 to 10 or 1 to 5 (depending on the companies needs)</p>
-</li>
-<li>
-<p>After I do this, I will create a dashboard for them to use on their own website.  I will work with their development team to do this and hopefully give HR and the CEO to have access to these grades. </p>
-</li>
-</ul></article></body></html>
+<pre><code>* The company cannot get me enough reviews to train a model (they can only give me 60 statements, we can discuss if this is enough later).
+
+* I will create a sentiment analysis using gensem and textblob or maybe just gensem.  I'm not entirely sure of what gensem can do, so I need to look into it more.  Regardless, I plan on using scores to create a grading system from 1 to 10 or 1 to 5 (depending on the companies needs)
+
+* After I do this, I will create a dashboard for them to use on their own website.  I will work with their development team to do this and hopefully give HR and the CEO to have access to these grades.
+</code></pre></article></body></html>
