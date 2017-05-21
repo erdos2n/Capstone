@@ -1,10 +1,10 @@
 <center>
-	![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVaVNwbdXoAbzd81KkwUqK5pbsj58sE6jOB-4hRhbyH-srkdPe)
+![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVaVNwbdXoAbzd81KkwUqK5pbsj58sE6jOB-4hRhbyH-srkdPe)
 </center>
 
 
 <center>
-	![](https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAAQeAAAAJGFkMjczOTIxLWZkNjUtNGMxZi1hZTIxLTAwMjBmODVjZTI0Ng.png)
+![](https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAAQeAAAAJGFkMjczOTIxLWZkNjUtNGMxZi1hZTIxLTAwMjBmODVjZTI0Ng.png)
 </center>
 
 # Ad Agency Capstone - Rafa
