@@ -1,6 +1,6 @@
 <p align = "center">
 <img src = "https://cdn.geekwire.com/wp-content/uploads/2016/09/Galvanize-Logo-Text-Logo-png-4.png">
-<img src = "https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAAQeAAAAJGFkMjczOTIxLWZkNjUtNGMxZi1hZTIxLTAwMjBmODVjZTI0Ng.png">
+<img src = "https://theinfiniteagency.com/wp-content/themes/infiniteAgency/assets/dist/img/west.jpg">
 </p>
 
 # Ad Agency Capstone - Rafa
