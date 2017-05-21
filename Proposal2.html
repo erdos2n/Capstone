@@ -1014,9 +1014,7 @@ body .markdown-body
     page-break-after: avoid;
   }
 }
-</style><title>Proposal2</title></head><body><article class="markdown-body"><p><center><br />
-<img alt="" height="200px" src="https://pbs.twimg.com/profile_images/595327206638755840/x9_fTdew.jpg" width="200px" />  <img alt="" height="200px" src="https://pbs.twimg.com/profile_images/3573407613/cc2d933500d6c7369fdca890103a9cef_400x400.jpeg" width="200px" /><br />
-</center></p>
+</style><title>Proposal2</title></head><body><article class="markdown-body"><p><img alt="" src="https://pbs.twimg.com/profile_images/595327206638755840/x9_fTdew.jpg" /><img alt="" src="https://pbs.twimg.com/profile_images/3573407613/cc2d933500d6c7369fdca890103a9cef_400x400.jpeg" /></p>
 <h1 id="ad-agency-capstone-rafa"><a name="user-content-ad-agency-capstone-rafa" href="#ad-agency-capstone-rafa" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Ad Agency Capstone - Rafa</h1>
 <h2 id="part-1-impression-model"><strong>Part 1: Impression Model</strong></h2>
 <ul>
@@ -1032,9 +1030,35 @@ body .markdown-body
 </ul>
 </li>
 <li>
-<p>After I do this, I would like to create some dashboard using Flask that will read in the report, play the game and give the best outcomes</p>
+<p>After I do this, I would like to create some dashboard using Flask that will read in the report, play the game and give the best outcomes<br />
+*</p>
 </li>
 </ul>
+<h1 id="data-description"><a name="user-content-data-description" href="#data-description" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Data Description</h1>
+<p>My data is a collection of tables  with various rows and 4000 + columns.  The column lengths are equal across all tables, which is nice, because I can concatenate all of the tables&hellip;and by can, I mean, I did. </p>
+<p>I created a <strong>data cleaning pipeline</strong> that works as follows:<br />
+<em> First I combine all of the tables into a large table (big_frame)<br />
+</em> Then I drop all NaN columns (100% NaNs)<br />
+<em> That reduces the number of columns to 1000<br />
+</em> After that I go through and convert all of the dates to datetime objects within the dataframe<br />
+<em> I then go and filter out all of the impressions that the customer has seen and create a list of our them.<br />
+    - Ex: [[ad1], [ad2, ad5, ad1], [ad2, ad5, ad5, ad9, &hellip;, ad10], &hellip;]<br />
+</em> Three new columns are then created using that data:<br />
+    - big_frame[hr] = the hour of the conversion, regardless of the day<br />
+    - big_frame[path_length] = the number of ads that person has seen before they converted.<br />
+    - big_frame[paths] = the actual ads they saw in order <br />
+<em> I then created histograms for the following data, to find relationships:<br />
+    - Conversions by time of day <br />
+    - path lengths <br />
+    - ads seen <br />
+</em> Now, I&rsquo;m going to use this data to create a count of wins and losses for each ad.<br />
+    - A win is if the ad is the last attribution in the path. (last node in the path) <br />
+    - A loss if it is anywhere else.<br />
+    - Ex: ad1 = [0, 0, 0, 0,  1, 0, 0, 1, 0, 0, 1, 1, 1, 0]<br />
+        + 0s are losses<br />
+        + 1s are wins <br />
+<em> I&rsquo;m then going to run a bayesian multi-arm bandit using this information and find the optimal path length, iterating over each &lsquo;game&rsquo;. <br />
+</em> This will become the impression model that needs to be used. </p>
 <h2 id="part-2-text-analysis"><strong>Part 2: Text Analysis</strong></h2>
 <ul>
 <li>
