@@ -58,17 +58,6 @@ The **cleaning pipeline** does the following:
 
 </center>
 
-             |          Grouping           ||
-First Header  | Second Header | Third Header |
- ------------ | :-----------: | -----------: |
-Content       |          *Long Cell*        ||
-Content       |   **Cell**    |         Cell |
-
-New section   |     More      |         Data |
-And more      | With an escaped '\|'         ||
-
-
-
 <h3>Step 2: Analyze the data </h3>
 
 <p align = "center">
@@ -88,9 +77,9 @@ And more      | With an escaped '\|'         ||
 
 	a. A win is if the ad is the last attribution in the path. (last node in the path) 
 
-	b. A loss if it is anywhere else.
-
-		i. Ex: ad1 = [0, 0, 0, 0,  1, 0, 0, 1, 0, 0, 1, 1, 1, 0]
+	b. A loss if it is anywhere else. 
+	
+	Ex: ad1 = [0, 0, 0, 0,  1, 0, 0, 1, 0, 0, 1, 1, 1, 0]
 
 	c. 0s are losses
 	
