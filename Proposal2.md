@@ -9,8 +9,11 @@
 Using attribution reports, I will run a multi-arm bandit to show which ads to run, how many times to run each ad and which order to run the ads.
 
 1. Steps to Setup Multi-Arm Bandit
+
 	a. Create win/loss lists for all ads
+	
 	b. Use Uniform Distributions
+	
 	c. Run Multi-Arm Bandit many times to get statistics
 
 After I do this, I would like to create some dashboard using Flask that will read in the report, play the game and give the best outcomes
@@ -24,7 +27,7 @@ My data is a collection of tables  with various rows and 4000 + columns.  The co
 <img src = "http://tomba.co/analysis-consult/images/data-cleansing.jpg">
 </p>
 
-I created a **data cleaning pipeline** that works as follows:
+The **cleaning pipeline** does the following:
 
 1. First I combine all of the tables into a large table (big_frame)
 
