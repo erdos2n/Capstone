@@ -51,7 +51,7 @@ The **cleaning pipeline** does the following:
 
 <center>
 | hr | path_length | paths  |
-|----|-------------|--------|
+|----|:-----------:|-------:|
 | 15 |     5       |[ad1,..]|
 | 2  |     1       |[ad5]   |
 </center>
