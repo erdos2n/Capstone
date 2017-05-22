@@ -9,12 +9,9 @@
 Using attribution reports, I will run a multi-arm bandit to show which ads to run, how many times to run each ad and which order to run the ads.
 
 1. Steps to Setup Multi-Arm Bandit
-
-  a. Create win/loss lists for all ads
-
-  b. Use Uniform Distributions
-
-  c. Run Multi-Arm Bandit many times to get statistics
+	a. Create win/loss lists for all ads
+	b. Use Uniform Distributions
+	c. Run Multi-Arm Bandit many times to get statistics
 
 After I do this, I would like to create some dashboard using Flask that will read in the report, play the game and give the best outcomes
 
