@@ -4,25 +4,25 @@
 </p>
 
 # Ad Agency Capstone - Rafa
-**Part 1: Impression Model**
+<h1> Part 1: Impression Model </h1>
 ------------------------------
 
-    * Using attribution reports, I will run a multi-arm bandit to show which ads to run, how many times to run each ad and which order to run the ads.
+	Using attribution reports, I will run a multi-arm bandit to show which ads to run, how many times to run each ad and which order to run the ads.
 
-	* **Steps to Setup Multi-Arm Bandit**
+	I. Steps to Setup Multi-Arm Bandit
 
-		* Create W/L lists for all ads
+		1. Create W/L lists for all ads
 
-		* Use Uniform Distributions
+		2. Use Uniform Distributions
 
-		* Run Multi-Arm Bandit many times to get statistics
+		3. Run Multi-Arm Bandit many times to get statistics
 
-    * After I do this, I would like to create some dashboard using Flask that will read in the report, play the game and give the best outcomes
+	After I do this, I would like to create some dashboard using Flask that will read in the report, play the game and give the best outcomes
 
-# Data Description
+<h2> Data Description </h2>
 My data is a collection of tables  with various rows and 4000 + columns.  The column lengths are equal across all tables, which is nice, because I can concatenate all of the tables...and by can, I mean, I did. 
 
-# Step 1: Clean the data 
+<h3>Step 1: Clean the data </h3>
 
 <p align = "center">
 <img src = "http://tomba.co/analysis-consult/images/data-cleansing.jpg">
@@ -30,86 +30,90 @@ My data is a collection of tables  with various rows and 4000 + columns.  The co
 
 I created a **data cleaning pipeline** that works as follows:
 
-    * First I combine all of the tables into a large table (big_frame)
+1. First I combine all of the tables into a large table (big_frame)
 
-    * Then I drop all NaN columns (100% NaNs)
+2. Then I drop all NaN columns (100% NaNs)
 
-        * That reduces the number of columns to 1000
+	a. That reduces the number of columns to 1000
 
-    * After that I go through and convert all of the dates to datetime objects within the dataframe
+3. After that I go through and convert all of the dates to datetime objects within the dataframe
 
-    * I then go and filter out all of the impressions that the customer has seen and create a list of our them.
+4. I then go and filter out all of the impressions that the customer has seen and create a list of our them.
 
-        * Ex: [[ad1], [ad2, ad5, ad1], [ad2, ad5, ad5, ad9, ..., ad10], ...]
+	a. Ex: [[ad1], [ad2, ad5, ad1], [ad2, ad5, ad5, ad9, ..., ad10], ...]
 
-    * Three new columns are then created using that data:
+5. Three new columns are then created using that data:
 
-        * big_frame[hr] = the hour of the conversion, regardless of the day
-    
-        * big_frame[path_length] = the number of ads that person has seen before they converted.
+	a. big_frame[hr] = the hour of the conversion, regardless of the day
 
-        * big_frame[paths] = the actual ads they saw in order 
+	b. big_frame[path_length] = the number of ads that person has seen before they converted.
 
-    
-        | hr | path_length | paths  |
-        |----|-------------|--------|
-        | 15 |     5       |[ad1,..]|
-        | 2  |     1       |[ad5]   |
+	c. big_frame[paths] = the actual ads they saw in order 
 
+<center>
+| hr | path_length | paths  |
+|----|-------------|--------|
+| 15 |     5       |[ad1,..]|
+| 2  |     1       |[ad5]   |
+</center>
 
-# Step 2: Analyze the data 
+<h3>Step 2: Analyze the data </h3>
 
 <p align = "center">
 <img src = "https://i.stack.imgur.com/T1Hep.png">
 </p>
 
 
-    * I then created histograms for the following data, to find relationships:
+1. I then created histograms for the following data, to find relationships:
 
-        * Conversions by time of day 
-    
-        * path lengths 
-    
-        * ads seen 
+	a. Conversions by time of day 
+	
+	b. path lengths 
 
-    * Now, I'm going to use this data to create a count of wins and losses for each ad.  
+	c. ads seen 
 
-        * A win is if the ad is the last attribution in the path. (last node in the path) 
-    
-        * A loss if it is anywhere else.
+2. Now, I'm going to use this data to create a count of wins and losses for each ad.  
 
-        * Ex: ad1 = [0, 0, 0, 0,  1, 0, 0, 1, 0, 0, 1, 1, 1, 0]
+	a. A win is if the ad is the last attribution in the path. (last node in the path) 
 
-          * 0s are losses
+	b. A loss if it is anywhere else.
 
-          * 1s are wins 
+		i. Ex: ad1 = [0, 0, 0, 0,  1, 0, 0, 1, 0, 0, 1, 1, 1, 0]
 
-# Step 3: Run the multi-arm bandit 
+	c. 0s are losses
+	
+	d. 1s are wins 
+
+<h3>Step 3: Run the multi-arm bandit</h3>
 
 <p align = "center">
 <img src = "http://imgs.xkcd.com/comics/progeny.png">
 </p>
 
 
-To run the bayesian multi arm bandit:
+<h4>Steps to create the multi-arm bandit:</h4>
 
-    * I will create a uniform distribution across the ads
- 
-    * I will then run the game until a win is hit.  I will store ads that were chosen and do it again.
+1. I will create a uniform distribution across the ads
 
-    * See step 2 
+2. I will choose an ad and change that ads distribution accordingly. 
 
-    * Do step 3 many times 
+3. Then, we will pop off an element from that ads list [either a 0 or 1]. 
+	a. If 1, we finish the game.
+	b. If 0, we do this again.
 
-    * I will then find the most used path to generate the best path. 
+4. Do step 3 thousands of times, finding a most common path.
 
-    * This will become the impression model that needs to be used. 
+5. This will become the impression model that needs to be used. 
+
+<h3>Step 4: Host it in Flask</h3>
+
+I would like an interface where a file can be uploaded (attribution report) and then a multi-arm bandit would begin, based on the given data in the attribution report. But that may not be possible, I don't really know at this point in time, given we haven't learned Flask....yet!
 
 
-**Part 2: Text Analysis**
+<h2>Part 2: Text Analysis</h2>
 ------------------------------
-    * The company cannot get me enough reviews to train a model (they can only give me 60 statements, we can discuss if this is enough later).
+1. The company cannot get me enough reviews to train a model (they can only give me 60 statements, we can discuss if this is enough later).
 
-    * I will create a sentiment analysis using gensem and textblob or maybe just gensem.  I'm not entirely sure of what gensem can do, so I need to look into it more.  Regardless, I plan on using scores to create a grading system from 1 to 10 or 1 to 5 (depending on the companies needs)
+2. I will create a sentiment analysis using gensem and textblob or maybe just gensem.  I'm not entirely sure of what gensem can do, so I need to look into it more.  Regardless, I plan on using scores to create a grading system from 1 to 10 or 1 to 5 (depending on the companies needs)
 
-    * After I do this, I will create a dashboard for them to use on their own website.  I will work with their development team to do this and hopefully give HR and the CEO to have access to these grades. 
+3. After I do this, I will create a dashboard for them to use on their own website.  I will work with their development team to do this and hopefully give HR and the CEO to have access to these grades. 
