@@ -6,18 +6,17 @@
 # Ad Agency Capstone - Rafa
 <h1> Part 1: Impression Model </h1>
 ------------------------------
+Using attribution reports, I will run a multi-arm bandit to show which ads to run, how many times to run each ad and which order to run the ads.
 
-	Using attribution reports, I will run a multi-arm bandit to show which ads to run, how many times to run each ad and which order to run the ads.
+I. Steps to Setup Multi-Arm Bandit
 
-	I. Steps to Setup Multi-Arm Bandit
+  1. Create W/L lists for all ads
 
-		1. Create W/L lists for all ads
+  2. Use Uniform Distributions
 
-		2. Use Uniform Distributions
+  3. Run Multi-Arm Bandit many times to get statistics
 
-		3. Run Multi-Arm Bandit many times to get statistics
-
-	After I do this, I would like to create some dashboard using Flask that will read in the report, play the game and give the best outcomes
+After I do this, I would like to create some dashboard using Flask that will read in the report, play the game and give the best outcomes
 
 <h2> Data Description </h2>
 My data is a collection of tables  with various rows and 4000 + columns.  The column lengths are equal across all tables, which is nice, because I can concatenate all of the tables...and by can, I mean, I did. 
