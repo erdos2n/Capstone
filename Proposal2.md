@@ -50,7 +50,7 @@ The **cleaning pipeline** does the following:
 	c. big_frame[paths] = the actual ads they saw in order 
 
 <center>
-|  <td colspan=3> Big Frame      |
+|            Big Frame         |||
 |....| hr | path_length | paths  |
 |----|----|-------------|--------|
 |....| 15 |     5       |[ad1,..]|
