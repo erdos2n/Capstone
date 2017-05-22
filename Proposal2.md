@@ -51,10 +51,10 @@ The **cleaning pipeline** does the following:
 
 <center>
 |            Big Frame        ||||
-|....| hr | path_length | paths  |
-|----|----|-------------|--------|
-|....| 15 |     5       |[ad1,..]|
-|....| 2  |     1       |[ad5]   |
+ hr | path_length | paths  |
+----|-------------|--------|
+ 15 |     5       |[ad1,..]|
+ 2  |     1       |[ad5]   |
 
 </center>
 
