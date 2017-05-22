@@ -49,14 +49,14 @@ The **cleaning pipeline** does the following:
 
 	c. big_frame[paths] = the actual ads they saw in order 
 
-<center>
+<p align = "center">
 
 | hr | path_length | paths  |
 |----|-------------|--------|
 | 15 |     5       |[ad1,..]|
 | 2  |     1       |[ad5]   |
 
-</center>
+</p>
 
 
 <h3>Step 2: Analyze the data </h3>
